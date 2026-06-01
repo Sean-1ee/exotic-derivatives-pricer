@@ -6,7 +6,7 @@ A Monte Carlo simulation framework for pricing exotic options and quantifying mo
 
 This project implements a comprehensive pricing engine for exotic financial derivatives — options whose payoffs depend on complex conditions that make analytical solutions impossible. Monte Carlo simulation is used throughout, with a focus on variance reduction techniques and model risk analysis.
 
-The project was motivated by a fascination with how mathematical uncertainty is priced in financial markets, complementing theoretical study of options through Akuna Capital's Options 101 course.
+The project was motivated by a fascination with how mathematical uncertainty is priced in financial markets.
 
 ## Key Results
 
