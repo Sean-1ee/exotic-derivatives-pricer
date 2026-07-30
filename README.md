@@ -13,7 +13,7 @@ The project was motivated by a fascination with how mathematical uncertainty is 
 | Finding | Result |
 |---------|--------|
 | Monte Carlo convergence rate | Empirically verified 1/√N |
-| Antithetic variates improvement | 0.96x — **ineffective** for path-dependent options |
+| Antithetic variates improvement | **~1.4x** reduction in standard error (~2x variance) |
 | Control variates improvement | **36x** reduction in standard error |
 | Model risk (Asian call) | +21.8% price difference GBM vs Jump Diffusion |
 | Model risk (Knock-In call) | **+42.7%** price difference — largest effect |
@@ -34,7 +34,7 @@ Option either activates (knock-in) or expires worthless (knock-out) if the stock
 
 A key limitation of Monte Carlo is slow 1/√N convergence. This project implements and compares two techniques:
 
-**Antithetic Variates** — For every random path Z, simulate mirror path -Z. Found to be ineffective for Asian options because the path-dependent payoff is not monotone in the random shocks, so antithetic pairs lack sufficient negative correlation.
+**Antithetic Variates** — For every random path Z, simulate the mirror path -Z. Because the arithmetic average is monotone in the shocks, a path and its mirror are negatively correlated, giving a modest ~1.4x reduction in standard error (~2x variance). The gain only appears when the estimator's standard error is measured on the antithetic *pairs* rather than pooled over all paths — computing it on the pooled paths hides the pair covariance and makes the technique look ineffective.
 
 **Control Variates** — Uses the geometric average Asian option (which has a known analytical solution) as a control variate to correct the arithmetic average estimate. Achieves **36x improvement** in precision — equivalent to using 1,300x more simulations.
 
